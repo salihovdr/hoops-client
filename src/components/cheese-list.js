@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchCheeses } from '../actions/cheese';
 
 export class CheeseList extends React.Component {
-  
+
   componentDidMount() {
     this.props.dispatch(fetchCheeses());
   }
@@ -11,7 +11,7 @@ export class CheeseList extends React.Component {
   render() {
 
   const cheeses = this.props.cheeses.map((cheese, index) => 
-    <li key={index}>{cheese}</li>
+    <li key={index}>{cheese.name}</li>
   );
 
     return (
