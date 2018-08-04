@@ -1,17 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
 import './cheese-form.css';
-import { postCheese } from '../actions/cheese';
 
-export class CheeseForm extends React.Component {
-  onSubmit(event) {
-    event.preventDefault();
+export default class CheeseForm extends React.Component {
+  onSubmit(e) {
+    e.preventDefault();
     const name = this.input.value.trim();
     
     if (name && this.props.addCheese) {
       this.props.addCheese(name);
-      this.props.dispatch(postCheese(name));
     }
     this.input.value = '';
     this.input.focus();
@@ -42,9 +38,3 @@ export class CheeseForm extends React.Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  cheeses: state.cheeses
-});
-
-export default connect(mapStateToProps)(CheeseForm);

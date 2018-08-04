@@ -10,8 +10,7 @@ export class CheeseList extends React.Component {
   }
 
   addNewCheese = (name) => {
-    postCheese(name);
-    fetchCheeses();
+    this.props.dispatch(postCheese(name));
   }
 
   render() {

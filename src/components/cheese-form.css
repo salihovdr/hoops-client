@@ -1,3 +1,7 @@
+*, html, body {
+  box-sizing: content-box;
+}
+
 input, button {
   width: 18.75rem;
   height: 2.125rem;
@@ -12,11 +16,12 @@ input, button {
 }
 
 button.addButton {
+  width: 18.75rem;
   color: #fff;
   font-size: 1em;
-  padding: 0;
-  border: 3px solid grey;
-  background: grey;
+  padding: 0.2em;
+  border: 1px solid orange;
+  background-color: orange;
 }
 
 input.cheeseName {

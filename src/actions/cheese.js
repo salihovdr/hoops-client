@@ -50,6 +50,6 @@ export const postCheese = (name) => dispatch => {
     },
     body: JSON.stringify({ name })
   })
-  // .then(res => res.json())
-  // .then((() => dispatch(fetchCheesesRequest())));
+  .then(res => res.json())
+  .then(cheese => dispatch(addCheese(cheese)));
 }
