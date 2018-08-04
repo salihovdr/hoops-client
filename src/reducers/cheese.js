@@ -7,8 +7,12 @@ const initialState = {
 }
 
 export default (state=initialState, action) => {
+
   if (action.type === actions.FETCH_CHEESES_REQUEST){
     return Object.assign({}, state, {loading: true});
+  }
+  else if(action.type === actions.ADD_CHEESE) {
+    return Object.assign({}, state, {cheeses: [...state.cheeses, action.name]})
   }
 
   else if (action.type === actions.FETCH_CHEESES_SUCCESS) {

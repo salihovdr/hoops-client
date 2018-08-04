@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCheeses } from '../actions/cheese';
+import CheeseForm from "./cheese-form";
+import { fetchCheeses, postCheese } from '../actions/cheese';
 
 export class CheeseList extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(fetchCheeses());
+  }
+
+  addNewCheese = (name) => {
+    postCheese(name);
+    fetchCheeses();
   }
 
   render() {
@@ -15,9 +21,12 @@ export class CheeseList extends React.Component {
   );
 
     return (
-      <ul>
-        {cheeses}
-      </ul>
+      <main>
+        <ul>
+          {cheeses}
+        </ul>
+        <CheeseForm addCheese={this.addNewCheese}/>
+      </main>
     );
   }
 }

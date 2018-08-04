@@ -1,6 +1,12 @@
 
 import { API_BASE_URL } from '../config';
 
+export const ADD_CHEESE = 'ADD_CHEESE';
+export const addCheese = (name) => ({
+  type: ADD_CHEESE,
+  name
+})
+
 export const FETCH_CHEESES_REQUEST = 'FETCH_CHEESES_REQUEST';
 export const fetchCheesesRequest = () => ({
   type: FETCH_CHEESES_REQUEST
@@ -33,4 +39,17 @@ export const fetchCheeses = () => dispatch => {
     .catch(err => {
       dispatch(fetchCheesesError(err))
     })
+}
+
+export const postCheese = (name) => dispatch => {
+  return fetch(`${API_BASE_URL}/cheeses`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name })
+  })
+  // .then(res => res.json())
+  // .then((() => dispatch(fetchCheesesRequest())));
 }
