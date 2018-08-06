@@ -1,13 +1,13 @@
 import React from 'react';
-import './cheese-form.css';
+import './court-form.css';
 
-export default class CheeseForm extends React.Component {
+export default class CourtForm extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     const name = this.input.value.trim();
     
-    if (name && this.props.addCheese) {
-      this.props.addCheese(name);
+    if (name && this.props.addCourt) {
+      this.props.addCourt(name);
     }
     this.input.value = '';
     this.input.focus();
@@ -17,9 +17,9 @@ export default class CheeseForm extends React.Component {
       <form onSubmit={e => this.onSubmit(e)}>
         <input
           type="text"
-          name="cheeseName"
-          id="cheeseName"
-          className="cheeseName"
+          name="courtName"
+          id="courtName"
+          className="courtName"
           min="1"
           max="50"
           autoComplete="off"
