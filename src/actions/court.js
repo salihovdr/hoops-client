@@ -1,15 +1,16 @@
 
 import { API_BASE_URL } from '../config';
 
-export const ADD_COURT = 'ADD_COURT';
-export const addCourt = (name) => ({
-  type: ADD_COURT,
-  name
+export const SET_FILTER = 'SET_FILTER';
+export const setFilter = filter => ({
+  type: SET_FILTER,
+  filter
 });
 
 export const FETCH_COURTS_REQUEST = 'FETCH_COURTS_REQUEST';
-export const fetchCourtsRequest = () => ({
-  type: FETCH_COURTS_REQUEST
+export const fetchCourtsRequest = (filter) => ({
+  type: FETCH_COURTS_REQUEST,
+  filter
 });
 
 export const FETCH_COURTS_SUCCESS = 'FETCH_COURTS_SUCCESS';
@@ -24,9 +25,13 @@ export const fetchCourtsError = error => ({
   error
 });
 
-export const fetchCourts = () => dispatch => {
-  dispatch(fetchCourtsRequest());
-  return fetch(`${API_BASE_URL}/courts`)
+export const fetchCourts = filter => dispatch => {
+  dispatch(fetchCourtsRequest(filter));
+  let fetchURL = `${API_BASE_URL}/courts`;
+  if (filter){
+    fetchURL = `${API_BASE_URL}/courts?zip=${filter}`;
+  }
+  return fetch(fetchURL)
     .then(res => {
       if (!res.ok) {
         throw new Error(res.statusText);
@@ -41,15 +46,15 @@ export const fetchCourts = () => dispatch => {
     });
 };
 
-export const postCourt = (name) => dispatch => {
-  return fetch(`${API_BASE_URL}/courts`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ name })
-  })
-    .then(res => res.json())
-    .then(court => dispatch(addCourt(court)));
-};
+// export const postCourt = (name) => dispatch => {
+//   return fetch(`${API_BASE_URL}/courts`, {
+//     method: 'POST',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({ name })
+//   })
+//     .then(res => res.json())
+//     .then(court => dispatch(addCourt(court)));
+// };

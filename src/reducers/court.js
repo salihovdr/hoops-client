@@ -1,6 +1,7 @@
 import * as actions from '../actions/court';
 
 const initialState = {
+  filter: '',
   courts: [],
   loading: false,
   error: null
@@ -11,8 +12,8 @@ export default (state=initialState, action) => {
   if (action.type === actions.FETCH_COURTS_REQUEST){
     return Object.assign({}, state, {loading: true});
   }
-  else if(action.type === actions.ADD_COURT) {
-    return Object.assign({}, state, {courts: [...state.courts, action.name]});
+  else if(action.type === actions.SET_FILTER) {
+    return Object.assign({}, state, { filter: action.filter });
   }
 
   else if (action.type === actions.FETCH_COURTS_SUCCESS) {

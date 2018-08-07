@@ -1,14 +1,12 @@
 import React from 'react';
-import './court-form.css';
+import './court-search-form.css';
 
-export default class CourtForm extends React.Component {
+export default class CourtSearchForm extends React.Component {
   onSubmit(e) {
     e.preventDefault();
-    const name = this.input.value.trim();
+    const filter = this.input.value.trim();
+    this.props.setFilter(filter);
     
-    if (name && this.props.addCourt) {
-      this.props.addCourt(name);
-    }
     this.input.value = '';
     this.input.focus();
   }
@@ -29,10 +27,10 @@ export default class CourtForm extends React.Component {
         <button
           type="submit"
           name="submit"
-          id="addButton"
-          className="addButton"
+          id="searchButton"
+          className="searchButton"
         >
-          add
+          search
         </button>
       </form>
     );

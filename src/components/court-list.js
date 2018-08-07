@@ -1,37 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CourtForm from "./court-form";
-import { fetchCourts, postCourt } from '../actions/court';
+import { fetchCourts } from '../actions/court';
 
 export class CourtList extends React.Component {
 
-  componentDidMount() {
-    this.props.dispatch(fetchCourts());
-  }
-
-  addNewCourt = (name) => {
-    this.props.dispatch(postCourt(name));
-  }
+  // componentDidMount() {
+  //   this.props.dispatch(fetchCourts(this.props.filter));
+  // }
 
   render() {
-
-  const courts = this.props.courts.map((court, index) => 
-    <li key={index}>{court.name}</li>
-  );
+    console.log(this.props);
+    const courts = this.props.courts.map((court, index) => 
+      <li key={index}>{court.name}</li>
+    );
 
     return (
       <main>
         <ul>
           {courts}
         </ul>
-        <CourtForm addCourt={this.addNewCourt}/>
       </main>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  courts: state.courts
-})
+  courts: state.courts,
+  filter: state.filter
+});
 
 export default connect(mapStateToProps)(CourtList);
