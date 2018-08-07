@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCourts } from '../actions/court';
+import Court from './court';
+import {Link} from 'react-router-dom';
+//import { API_BASE_URL } from '../config';
+//import { fetchCourts } from '../actions/court';
 
 export class CourtList extends React.Component {
 
@@ -9,17 +12,19 @@ export class CourtList extends React.Component {
   // }
 
   render() {
-    console.log(this.props);
-    const courts = this.props.courts.map((court, index) => 
-      <li key={index}>{court.name}</li>
-    );
+
+    const courts = this.props.courts.map((court) =>
+            <li key={court.id}>
+                <Link to={`/${court.id}`}><Court {...court} /></Link>
+            </li>
+        );
 
     return (
-      <main>
-        <ul>
+      <div>
+        <ul className='courtList'>
           {courts}
         </ul>
-      </main>
+      </div>
     );
   }
 }
@@ -27,6 +32,6 @@ export class CourtList extends React.Component {
 const mapStateToProps = state => ({
   courts: state.courts,
   filter: state.filter
-});
+})
 
 export default connect(mapStateToProps)(CourtList);

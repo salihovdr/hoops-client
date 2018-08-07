@@ -39,6 +39,7 @@ export const fetchCourts = filter => dispatch => {
       return res.json();
     })
     .then (data => {
+      console.log(data);
       dispatch(fetchCourtsSuccess(data));
     })
     .catch(err => {
