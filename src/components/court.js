@@ -19,7 +19,7 @@ export class Court extends React.Component {
           <h1>{this.props.name}</h1>
           <img className="single-court-img" src={this.props.photo} alt="court"/>
           <div className="single-court-desc">{this.props.description}</div>
-          <Link to={'/new-event-form'}>Create event</Link>
+          <Link to={`/courts/${this.props.courtId}/create-event`}>Create event</Link>
         </div>
       </main>
     );

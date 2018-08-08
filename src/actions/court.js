@@ -1,6 +1,15 @@
 
 import { API_BASE_URL } from '../config';
 
+export const CREATE_EVENT = 'CREATE_EVENT'
+export const createEvent = (title, description, date, time) => ({
+  type: CREATE_EVENT,
+  title,
+  description,
+  date,
+  time
+})
+
 export const SET_FILTER = 'SET_FILTER';
 export const setFilter = filter => ({
   type: SET_FILTER,
@@ -67,15 +76,15 @@ export const fetchSingleCourt = id => dispatch => {
     });
 };
 
-// export const postCourt = (name) => dispatch => {
-//   return fetch(`${API_BASE_URL}/courts`, {
-//     method: 'POST',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({ name })
-//   })
-//     .then(res => res.json())
-//     .then(court => dispatch(addCourt(court)));
-// };
+export const postEvent = (title, description, date, time) => dispatch => {
+  return fetch(`${API_BASE_URL}/events`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ title, description, date, time })
+  })
+    .then(res => res.json())
+    .then(event => dispatch(createEvent(event)));
+};

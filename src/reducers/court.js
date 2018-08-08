@@ -4,7 +4,8 @@ const initialState = {
   filter: '',
   courts: [],
   loading: false,
-  error: null
+  error: null,
+  events: []
 };
 
 export default (state=initialState, action) => {
@@ -14,6 +15,12 @@ export default (state=initialState, action) => {
   }
   else if(action.type === actions.SET_FILTER) {
     return Object.assign({}, state, { filter: action.filter });
+  }
+
+  else if(action.type === actions.CREATE_EVENT) {
+    return Object.assign(
+      {}, state, 
+      {events: [...state.events, { title: action.title, description: action.description, date: action.date, time: action.time}]})
   }
 
   else if (action.type === actions.FETCH_COURTS_SUCCESS) {

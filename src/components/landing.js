@@ -6,7 +6,7 @@ import Court from './court';
 import { BrowserRouter as Router, Route /*, Switch */ } from 'react-router-dom';
 
 import './landing.css';
-//import { EventForm } from './event-form';
+import { EventForm } from './event-create-form';
 
 
 export class Landing extends React.Component {
@@ -24,7 +24,7 @@ export class Landing extends React.Component {
           <Route path="/" exact component={ CourtSearchForm } />
           <Route exact path="/courts/:courtId" component={ Court } />
           <Route exact path="/courts" component={ CourtList } />
-          {/* <Route exact path="/courts/:courtId/new-event" component={ EventForm } /> */}
+          <Route exact path="/courts/:courtId/create-event" component={ EventForm} />
           {/* </Switch> */}
         </div>
       </Router>
