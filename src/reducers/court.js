@@ -17,7 +17,8 @@ export default (state=initialState, action) => {
   }
 
   else if (action.type === actions.FETCH_COURTS_SUCCESS) {
-    return Object.assign({}, state, {courts: [...action.courts], loading: false, error: null});
+    console.log(action);
+    return Object.assign({}, state, {courts: action.courts, loading: false, error: null});
   }
 
   else if (action.type === actions.FETCH_COURTS_ERROR) {

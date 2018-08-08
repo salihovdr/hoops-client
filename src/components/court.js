@@ -1,18 +1,37 @@
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './court.css';
+import { fetchSingleCourt } from '../actions/court';
 
-export default function Court(props) {
+export class Court extends React.Component {
+  
+  componentDidMount() {
+    this.props.dispatch(fetchSingleCourt(this.props.courtId));
+  }
+  render() {
+
     return (
-        <div className="court">
-          {/* <img src={props.photo} /> */}
-          <h4>{props.name}</h4>
-          {/* <p>{props.description}</p> */}
+      <main>
+        <div className="single-court">
+          <h1>{this.props.name}</h1>
+          <img className="single-court-img" src={this.props.photo} alt="court"/>
+          <div className="single-court-desc">{this.props.description}</div>
+          <Link to={'/new-event-form'}>Create event</Link>
         </div>
+      </main>
     );
+  }
+}
+
+const mapStateToProps = (state, props) => {
+  const courtId = props.match.params.courtId;
+  const court = state.courts;
+  return Object.assign({}, court, {
+    courtId
+  });
 };
 
-Court.defaultProps = {
-  "name": ''
-};
+export default connect(mapStateToProps)(Court);

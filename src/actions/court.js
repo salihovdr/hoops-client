@@ -47,6 +47,26 @@ export const fetchCourts = filter => dispatch => {
     });
 };
 
+export const fetchSingleCourt = id => dispatch => {
+  dispatch(fetchCourtsRequest(id));
+  let fetchURL = `${API_BASE_URL}/courts/${id}`;
+
+  return fetch(fetchURL)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      return res.json();
+    })
+    .then(data => {
+      console.log(data);
+      dispatch(fetchCourtsSuccess(data));
+    })
+    .catch(err => {
+      dispatch(fetchCourtsError(err));
+    });
+};
+
 // export const postCourt = (name) => dispatch => {
 //   return fetch(`${API_BASE_URL}/courts`, {
 //     method: 'POST',

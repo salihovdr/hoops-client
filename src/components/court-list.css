@@ -1,0 +1,18 @@
+.court-list-court-img {
+  width: 100px;
+  float: left;
+  margin-right: 10px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 25px;
+}
+
+.court-list-court-name, .court-list-court-desc {
+}

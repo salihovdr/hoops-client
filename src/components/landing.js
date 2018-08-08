@@ -1,32 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CourtSearchForm from "./court-search-form";
-import { fetchCourts, setFilter } from '../actions/court';
-import { CourtList } from './court-list';
-import {BrowserRouter as Router, Route /*, Link*/} from 'react-router-dom';
+import CourtSearchForm from './court-search-form';
+import CourtList from './court-list';
+import Court from './court';
+import { BrowserRouter as Router, Route /*, Switch */ } from 'react-router-dom';
+
+import './landing.css';
+//import { EventForm } from './event-form';
 
 
 export class Landing extends React.Component {
-  
-  // componentDidMount() {
-  //   this.props.dispatch(fetchCourts(this.props.filter));
-  // }
 
-  setFilter = (filter) => {
-    this.props.dispatch(setFilter(filter));
-    this.props.dispatch(fetchCourts(filter));
-  }
+  // setFilter(filter){
+  //   this.props.dispatch(setFilter(filter));
+  //   this.props.dispatch(fetchCourts(filter));
+  // }
 
   render() {
     return (
       <Router>
         <div className='landing'>
-          <main>
-            <Route exact path="/courts" component={CourtList} />
-            <CourtSearchForm setFilter={this.setFilter} />
-            
-            <CourtList courts={this.props.courts}/>
-          </main>
+          {/* <Switch> */}
+          <Route path="/" exact component={ CourtSearchForm } />
+          <Route exact path="/courts/:courtId" component={ Court } />
+          <Route exact path="/courts" component={ CourtList } />
+          {/* <Route exact path="/courts/:courtId/new-event" component={ EventForm } /> */}
+          {/* </Switch> */}
         </div>
       </Router>
     );
@@ -36,6 +35,6 @@ export class Landing extends React.Component {
 const mapStateToProps = state => ({
   courts: state.courts,
   filter: state.filter
-})
+});
 
 export default connect(mapStateToProps)(Landing);

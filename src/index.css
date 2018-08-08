@@ -1,10 +1,15 @@
-body {
+body, html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: content-box;
 }
 
-ul, h1 {
+.single-court-img {
+  display: block;
+}
+
+ul, h1, .single-court-img, .single-court-desc, .single-court {
   width: 18.75rem;
   margin: 30px auto;
 }
