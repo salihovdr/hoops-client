@@ -9,7 +9,7 @@ body, html {
   display: block;
 }
 
-ul, h1, .single-court-img, .single-court-desc, .single-court {
+ul, h1, .single-court-img, .single-court-desc, .single-court, .single-event {
   width: 18.75rem;
   margin: 30px auto;
 }

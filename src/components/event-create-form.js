@@ -7,14 +7,14 @@ import { postEvent } from '../actions/court';
 export class EventForm extends React.Component {
   onSubmit(event) {
     event.preventDefault();
-      const title = this.title.value;
-      const description = this.description.value;
-      const date = this.date.value;
-      const time = this.time.value;
+    const title = this.title.value;
+    const description = this.description.value;
+    const timestamp = {date: this.date.value, time: this.time.value};
+    console.log(timestamp);
   
-      this.props.dispatch(postEvent(title, description, date, time));
-      this.props.history.push('/courts/');
-}
+    this.props.dispatch(postEvent(title, description, timestamp));
+    this.props.history.push(`/courts/${this.props.courtId}`);
+  }
 
   render() {
     return (
@@ -73,7 +73,7 @@ const mapStateToProps = (state, props) => {
   const court = state.courts;
   return Object.assign({}, court, {
     courtId
-  })
+  });
 };
 
 export default connect(mapStateToProps)(EventForm);

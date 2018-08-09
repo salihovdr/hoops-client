@@ -5,7 +5,14 @@
 .single-court-desc {
   background-color: bisque;
 }
+/* .single-court-address, .single-court-hours {
+  margin-top: 10px;
+} */
 
 h1 {
   text-align: center;
+}
+
+.single-court li {
+  margin-bottom: 5px;
 }
