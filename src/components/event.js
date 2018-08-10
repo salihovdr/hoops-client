@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import './event.css';
-import { fetchSingleEvent } from '../actions/court';
+import { fetchSingleEvent } from '../actions/events';
 
 export class Event extends React.Component {
 
@@ -37,7 +37,7 @@ Event.defaultProps = { date: '', time: '', courtId: {} };
 
 const mapStateToProps = (state, props) => {
   const eventId = props.match.params.eventId;
-  const event = state.events[0]; //look here
+  const event = state.event.events[0]; //look here
   return Object.assign({}, event, {
     eventId
   });

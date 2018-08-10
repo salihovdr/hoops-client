@@ -1,4 +1,4 @@
-body, html {
+body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -10,6 +10,24 @@ body, html {
 }
 
 ul, h1, .single-court-img, .single-court-desc, .single-court, .single-event {
-  width: 18.75rem;
+  width: 100%;
   margin: 30px auto;
+}
+
+@media (min-width: 900px) {
+  .large-menu-nav a {
+    color: DarkOrange;
+    font-size: 20px;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  nav li {
+  padding: 10px 0;
+    color: red;
+      padding: 10px 0;
+      display: block;
+      margin-left: 0;
+  }
 }

@@ -1,39 +1,6 @@
 
 import { API_BASE_URL } from '../config';
 
-export const CREATE_EVENT = 'CREATE_EVENT';
-export const createEvent = (title, description, date, time) => ({
-  type: CREATE_EVENT,
-  title,
-  description,
-  date,
-  time
-});
-
-export const SET_FILTER = 'SET_FILTER';
-export const setFilter = filter => ({
-  type: SET_FILTER,
-  filter
-});
-
-export const FETCH_COURTS_REQUEST = 'FETCH_COURTS_REQUEST';
-export const fetchCourtsRequest = (filter) => ({
-  type: FETCH_COURTS_REQUEST,
-  filter
-});
-
-export const FETCH_COURTS_SUCCESS = 'FETCH_COURTS_SUCCESS';
-export const fetchCourtsSuccess = courts => ({
-  type: FETCH_COURTS_SUCCESS,
-  courts
-});
-
-export const FETCH_COURTS_ERROR = 'FETCH_COURTS_ERROR';
-export const fetchCourtsError = error => ({
-  type: FETCH_COURTS_ERROR,
-  error
-});
-
 export const FETCH_EVENTS_REQUEST = 'FETCH_EVENTS_REQUEST';
 export const fetchEventsRequest = () => ({
   type: FETCH_EVENTS_REQUEST
@@ -51,47 +18,14 @@ export const fetchEventsError = error => ({
   error
 });
 
-export const fetchCourts = filter => dispatch => {
-  dispatch(fetchCourtsRequest(filter));
-  let fetchURL = `${API_BASE_URL}/courts`;
-  if (filter){
-    fetchURL = `${API_BASE_URL}/courts?zip=${filter}`;
-  }
-  return fetch(fetchURL)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(res.statusText);
-      }
-      return res.json();
-    })
-    .then (data => {
-      console.log(data);
-      dispatch(fetchCourtsSuccess(data));
-    })
-    .catch(err => {
-      dispatch(fetchCourtsError(err));
-    });
-};
-
-export const fetchSingleCourt = id => dispatch => {
-  dispatch(fetchCourtsRequest(id));
-  let fetchURL = `${API_BASE_URL}/courts/${id}`;
-
-  return fetch(fetchURL)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(res.statusText);
-      }
-      return res.json();
-    })
-    .then(data => {
-      console.log(data);
-      dispatch(fetchCourtsSuccess([data]));
-    })
-    .catch(err => {
-      dispatch(fetchCourtsError(err));
-    });
-};
+export const CREATE_EVENT = 'CREATE_EVENT';
+export const createEvent = (title, description, date, time) => ({
+  type: CREATE_EVENT,
+  title,
+  description,
+  date,
+  time
+});
 
 export const fetchEvents = () => dispatch => {
   dispatch(fetchEventsRequest());

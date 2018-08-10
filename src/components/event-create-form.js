@@ -2,7 +2,7 @@ import React from 'react';
 
 import './event-create-form.css';
 import { connect } from 'react-redux';
-import { postEvent } from '../actions/court';
+import { postEvent } from '../actions/events';
 
 export class EventForm extends React.Component {
   onSubmit(event) {

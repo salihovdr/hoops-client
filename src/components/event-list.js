@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchEvents } from '../actions/court';
+import { fetchEvents } from '../actions/events';
 
 import './event-list.css';
 
@@ -41,7 +41,7 @@ export class EventList extends React.Component {
 EventList.defaultProps = { events: [] };
 
 const mapStateToProps = state => ({
-  events: state.events
+  events: state.event.events
 });
 
 export default connect(mapStateToProps)(EventList);

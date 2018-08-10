@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchCourts } from '../actions/court';
+import { fetchCourts } from '../actions/courts';
 
 import './court-list.css';
 
@@ -14,7 +14,7 @@ export class CourtList extends React.Component {
 
   render() {
     console.log(this.props.courts);
-    const courts = this.props.courts.map(court => (
+    const courts = this.props.courts ? this.props.courts.map(court => (
       <li className="court-list-court" key={court.id}>
         <img className="court-list-court-img" src={court.photo} alt="court"/>
         <div className="court-list-court-name">
@@ -22,7 +22,7 @@ export class CourtList extends React.Component {
         </div>
         <div className="court-list-court-desc">{court.description}</div>
       </li>
-    ));
+    )):[];
 
     return (
       <main>
@@ -39,9 +39,11 @@ export class CourtList extends React.Component {
   }
 }
 
+// CourtList.defaultProps={ courts: [] };
+
 const mapStateToProps = state => ({
-  courts: state.courts,
-  filter: state.filter
+  courts: state.court.courts,
+  filter: state.court.filter
 });
 
 export default connect(mapStateToProps)(CourtList);

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './court.css';
-import { fetchSingleCourt } from '../actions/court';
+import { fetchSingleCourt } from '../actions/courts';
 
 export class Court extends React.Component {
   
@@ -51,7 +51,7 @@ Court.defaultProps = { hours: {}, address: {}, events: [] };
 
 const mapStateToProps = (state, props) => {
   const courtId = props.match.params.courtId;
-  const court = state.courts[0];
+  const court = state.court.courts[0];
   return Object.assign({}, court, {
     courtId
   });

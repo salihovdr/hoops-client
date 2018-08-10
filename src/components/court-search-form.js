@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './court-search-form.css';
-import { Link } from 'react-router-dom';
-import { fetchCourts, setFilter } from '../actions/court';
+import { Link, withRouter } from 'react-router-dom';
+import { fetchCourts, setFilter } from '../actions/courts';
 
 export class CourtSearchForm extends React.Component {
   
@@ -20,9 +20,6 @@ export class CourtSearchForm extends React.Component {
   render(){
     return (
       <div className="court-search-form">
-        <header>
-          <h1>Find a court and let's play some hoops!</h1>
-        </header>
         <form onSubmit={e => this.onSubmit(e)}>
           <input
             type="text"
@@ -50,8 +47,8 @@ export class CourtSearchForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  courts: state.courts,
-  filter: state.filter
+  courts: state.court.courts,
+  filter: state.court.filter
 });
 
-export default connect(mapStateToProps)(CourtSearchForm);
+export default withRouter(connect(mapStateToProps)(CourtSearchForm));
