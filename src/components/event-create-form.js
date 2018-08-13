@@ -9,10 +9,10 @@ export class EventForm extends React.Component {
     event.preventDefault();
     const title = this.title.value;
     const description = this.description.value;
+    const courtId = this.props.courtId;
     const timestamp = {date: this.date.value, time: this.time.value};
-    console.log(timestamp);
   
-    this.props.dispatch(postEvent(title, description, timestamp));
+    this.props.dispatch(postEvent(title, description, timestamp, courtId));
     this.props.history.push(`/courts/${this.props.courtId}`);
   }
 

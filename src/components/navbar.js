@@ -15,11 +15,21 @@ export class Navbar extends React.Component {
   }
   render() {
     // Only render the log out button if we are logged in
-    let logOutButton;
+    let logOutLink;
+    let logInLink = (
+      <Link to="/login">Login</Link>
+    );
+    let registerLink = (
+      <Link to="/register">Register</Link>
+    );
+
     if (this.props.loggedIn) {
-      logOutButton = (
-        <button onClick={() => this.logOut()}>Log out</button>
+      logOutLink = (
+        <a href='' onClick={() => this.logOut()}>Log out</a>
       );
+      logInLink = null;
+      registerLink = null;
+      
     }
     return (
       <ResponsiveMenu
@@ -44,13 +54,13 @@ export class Navbar extends React.Component {
                 <Link to='/events'>Events</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
+                {logInLink}
               </li>
               <li>
-                <Link to="/register">Register</Link>
+                {registerLink}
               </li>
               <li>
-                <a href="">{logOutButton}</a>
+                {logOutLink}
               </li>
             </ul>
           </nav>

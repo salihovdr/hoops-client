@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 import CourtSearchForm from './court-search-form';
 import './landing.css';
@@ -8,9 +8,9 @@ import './landing.css';
 
 export function Landing(props) {
   // If we are logged in redirect straight to the user's profile page
-  if (props.loggedIn) {
-    return <Redirect to="/user" />;
-  }
+  // if (props.loggedIn) {
+  //   return <Redirect to="/user" />;
+  // }
 
   return (
     <div className="home">

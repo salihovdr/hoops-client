@@ -37,7 +37,7 @@ Event.defaultProps = { date: '', time: '', courtId: {} };
 
 const mapStateToProps = (state, props) => {
   const eventId = props.match.params.eventId;
-  const event = state.event.events[0]; //look here
+  const event = state.event.singleEvent;
   return Object.assign({}, event, {
     eventId
   });

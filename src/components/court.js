@@ -23,7 +23,7 @@ export class Court extends React.Component {
     const eventName = this.props.events.map((event, index) => {
       return <li key={index}>{event.title}</li>;
     });
-    const eventId = this.props.events.map((event, index) => {
+    const eventId = this.props.events.map(event => {
       return event.id;
     });
 
@@ -51,10 +51,15 @@ Court.defaultProps = { hours: {}, address: {}, events: [] };
 
 const mapStateToProps = (state, props) => {
   const courtId = props.match.params.courtId;
-  const court = state.court.courts[0];
+  const court = state.court.singleCourt;
   return Object.assign({}, court, {
     courtId
   });
 };
+
+// const mapStateToProps = (state, props) => ({
+//   courtId: props.match.params.courtId,
+//   singleCourt: state.court.singleCourt
+// });
 
 export default connect(mapStateToProps)(Court);

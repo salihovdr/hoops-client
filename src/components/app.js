@@ -65,8 +65,8 @@ export class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  courts: state.court.courts,
-  filter: state.court.filter,
+  // courts: state.court.courts,
+  // filter: state.court.filter,
   hasAuthToken: state.auth.authToken !== null,
   loggedIn: state.auth.currentUser !== null
 });

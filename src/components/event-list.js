@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchEvents } from '../actions/events';
+import { fetchEvents } from '../actions/events'; //changed from fetchEvents
 
 import './event-list.css';
 
@@ -9,7 +9,7 @@ import './event-list.css';
 export class EventList extends React.Component {
 
   componentDidMount() {
-    this.props.dispatch(fetchEvents());
+    this.props.dispatch(fetchEvents()); //changed from fetchEvents
   }
 
   render() {
@@ -38,10 +38,10 @@ export class EventList extends React.Component {
   }
 }
 
-EventList.defaultProps = { events: [] };
+// EventList.defaultProps = { events: [] };
 
 const mapStateToProps = state => ({
-  events: state.event.events
+  events: state.event.events //changed from state.event.events
 });
 
 export default connect(mapStateToProps)(EventList);

@@ -25,6 +25,18 @@ export const fetchCourtsError = error => ({
   error
 });
 
+export const FETCH_SINGLE_COURT_SUCCESS = 'FETCH_SINGLE_COURT_SUCCESS';
+export const fetchSingleCourtSuccess = singleCourt => ({
+  type: FETCH_SINGLE_COURT_SUCCESS,
+  singleCourt
+});
+
+export const FETCH_SINGLE_COURT_ERROR = 'FETCH_SINGLE_COURT_ERROR';
+export const fetchSingleCourtError = error => ({
+  type: FETCH_SINGLE_COURT_ERROR,
+  error
+});
+
 export const fetchCourts = filter => dispatch => {
   dispatch(fetchCourtsRequest(filter));
   let fetchURL = `${API_BASE_URL}/courts`;
@@ -48,10 +60,8 @@ export const fetchCourts = filter => dispatch => {
 };
 
 export const fetchSingleCourt = id => dispatch => {
-  dispatch(fetchCourtsRequest(id));
-  let fetchURL = `${API_BASE_URL}/courts/${id}`;
-
-  return fetch(fetchURL)
+  //dispatch(fetchCourtsRequest(id));
+  return fetch(`${API_BASE_URL}/courts/${id}`)
     .then(res => {
       if (!res.ok) {
         throw new Error(res.statusText);
@@ -59,10 +69,9 @@ export const fetchSingleCourt = id => dispatch => {
       return res.json();
     })
     .then(data => {
-      console.log(data);
-      dispatch(fetchCourtsSuccess([data]));
+      dispatch(fetchSingleCourtSuccess(data));
     })
     .catch(err => {
-      dispatch(fetchCourtsError(err));
+      dispatch(fetchSingleCourtError(err));
     });
 };
