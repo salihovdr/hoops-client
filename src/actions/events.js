@@ -90,8 +90,9 @@ export const postEvent = (title, description, timestamp, courtId) => (dispatch, 
     .then(res => res.json())
     .then(event => {
       dispatch(createEvent(event));
-    })
-    .catch(err => {
-      dispatch(fetchEventsError(err));
     });
+  //is this necessary?
+  // .catch(err => {
+  //   dispatch(createEventError(err));
+  // });
 };
