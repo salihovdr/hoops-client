@@ -1,5 +1,63 @@
+.landing {
+  background-image: 
+    url('https://images.unsplash.com/photo-1533709454978-f04ecf9a5afe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fa9e14b3afdc73877bd46f1b9246de19&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+
+.quote {
+  background: rgba(255, 255, 255, 0.75);
+  color: #777; 
+  padding: 0.5rem;
+  margin-top: 200px;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 15px;
+  font-weight: 300;
+}
+
+.landing-h1 {
+  background: orange;
+  color: #fff;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 300;
+}
+
 .see-all-courts {
-  display: block;
-  width: 18.75rem;
-  margin: 30px auto;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  display: inline-block;
+  font-weight: 300;
 } 
+
+a.see-all-courts {
+  color: #fff;
+  text-decoration: none;
+}
+
+.padded-multiline {
+  font-size: 60px;
+  line-height: 1.4; 
+  padding: 120px 50px 50px 50px;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.padded-multiline span { 
+  background-color: rgba(51,51,51,0.90);
+  color: #fff; 
+  display: inline;
+  padding: 0.5rem;
+}
+
+@media screen and (max-width: 755px) {
+    .padded-multiline {
+      font-size: 35px;
+      padding-top: 60px;
+    }
+  }

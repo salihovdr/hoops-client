@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route, withRouter, Switch} from 'react-router-dom';
+import {Route, withRouter /*, Switch*/} from 'react-router-dom';
 
 import Navbar from './navbar';
 import Landing from './landing';
@@ -47,18 +47,18 @@ export class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/user" component={User} />
-          <Route exact path="/register" component={RegistrationPage} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/courts/:courtId" component={ Court } />
-          <Route exact path="/courts" component={ CourtList } />
-          <Route exact path="/courts/:courtId/create-event" component={ EventForm} />
-          <Route exact path="/events" component={ EventList } />
-          <Route exact path="/events/:eventId" component={ Event } />
-        </Switch>
+        {/* <Switch> */}
+        <Route path="/:other" component={Navbar} />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/user" component={User} />
+        <Route exact path="/register" component={RegistrationPage} />
+        <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/courts/:courtId" component={ Court } />
+        <Route exact path="/courts" component={ CourtList } />
+        <Route exact path="/courts/:courtId/create-event" component={ EventForm} />
+        <Route exact path="/events" component={ EventList } />
+        <Route exact path="/events/:eventId" component={ Event } />
+        {/* </Switch> */}
       </div>
     );
   }

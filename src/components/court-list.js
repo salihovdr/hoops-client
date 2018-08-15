@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchCourts } from '../actions/courts';
+import { fetchCourts, resetFilter } from '../actions/courts';
 
 import './court-list.css';
 
@@ -12,28 +12,52 @@ export class CourtList extends React.Component {
     this.props.dispatch(fetchCourts(this.props.filter));
   }
 
+  showAllCourts(){
+    this.props.dispatch(resetFilter());
+  }
+
   render() {
-    console.log(this.props.courts);
+    let backToLandingPage = <Link to={'/'}>Find courts near you</Link>;
+    let heading = (<h1 className='courtlist-heading'>Courts in Arlington</h1>);
+    if (this.props.filter) {
+      backToLandingPage = <a href='' onClick={() => this.showAllCourts()}>See all courts</a>;
+      heading = <h1>Courts in '{this.props.filter}'</h1>;
+    }
+    if(this.props.courts.length < 1) {
+      return ( 
+        <main>
+          <header>
+            {heading}
+          </header>
+          <div>Unfortunately, there are no courts in this area. See <a href='' onClick={() => this.showAllCourts()}>all courts</a> or try a <Link to='/'>new search</Link></div>
+        </main>
+      );
+    }
     const courts = this.props.courts ? this.props.courts.map(court => (
-      <li className="court-list-court" key={court.id}>
-        <img className="court-list-court-img" src={court.photo} alt="court"/>
-        <div className="court-list-court-name">
-          <Link to={`/courts/${court.id}`}>{court.name}</Link>
+      <article key={court.id} className="col-4" role="contentinfo" aria-label="Court">
+        <div className="box">
+          <img src={court.photo} alt="court" />
+          <div className="court-brief">
+            <h2><Link to={`/courts/${court.id}`}>{court.name}</Link></h2>
+            <p className='description'>{court.description}</p>
+          </div>
         </div>
-        <div className="court-list-court-desc">{court.description}</div>
-      </li>
+      </article>
     )):[];
 
     return (
-      <main>
-        <header>
-          <h1>Courts:</h1>
-        </header>
-        <div className="courts">
-          <ul className="court-list">
-            { courts }
-          </ul>
-        </div>
+      <main role='main' className='courts'>
+        <section className="row courtlist-header">
+          <div className='col-12'>
+            {heading}
+            <div className='courts-near-you'>
+              {backToLandingPage}
+            </div>
+          </div>
+        </section>
+        <section className="row" role="contentinfo" aria-label="List of basketball courts">
+          {courts}  
+        </section>
       </main>
     );
   }

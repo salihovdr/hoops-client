@@ -18,6 +18,9 @@ export class EventForm extends React.Component {
 
   render() {
     return (
+      <main role='main' className='event-create-form'>
+        <section className='row'>
+          <div className="col-12">
       <form onSubmit={e => this.onSubmit(e)}>
         <input
           type="text"
@@ -64,6 +67,9 @@ export class EventForm extends React.Component {
           Create
         </button>
       </form>
+      </div>
+      </section>
+      </main>
     );
   }
 }

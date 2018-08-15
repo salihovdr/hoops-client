@@ -13,14 +13,19 @@ export function Landing(props) {
   // }
 
   return (
-    <div className="home">
-      <header>
-        <h1>Find a court and let's play some hoops!</h1>
-      </header>
-      <main>
-        <CourtSearchForm />
-      </main>
-    </div>
+    <main role='main' className='landing'>
+      <section className='row'>
+        <div className='col-12'>
+          <header>
+            <div className="padded-multiline"><span>Is there a better way to make new friends?</span></div>
+            <h1 className='landing-h1'>Find a court and start shooting!</h1>
+          </header>
+          <div>
+            <CourtSearchForm />
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
 

@@ -1,4 +1,5 @@
 import * as actions from '../actions/courts';
+import * as eventActions from '../actions/events';
 
 const initialState = {
   filter: '',
@@ -12,6 +13,18 @@ export default (state = initialState, action) => {
 
   if (action.type === actions.FETCH_COURTS_REQUEST) {
     return Object.assign({}, state, { loading: true });
+  }
+
+  else if (action.type === eventActions.CREATE_EVENT) {
+    return Object.assign({}, state,
+      { courts: state.courts.map(court => {
+        if (court.id === action.courtId){
+          return Object.assign({}, court, { events: [...court.events, { title: action.title, description: action.description, courtId: action.courtId, time: action.time, date: action.date }]});
+        }
+        return court;
+      })
+      }
+    );
   }
 
   else if (action.type === actions.FETCH_COURTS_SUCCESS) {
@@ -31,6 +44,9 @@ export default (state = initialState, action) => {
   }
 
   else if (action.type === actions.SET_FILTER) {
+    return Object.assign({}, state, { filter: action.filter });
+  }
+  else if (action.type === actions.RESET_FILTER) {
     return Object.assign({}, state, { filter: action.filter });
   }
 

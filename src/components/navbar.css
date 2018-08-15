@@ -1,37 +1,51 @@
   
-  nav {
-    border-bottom: 1px solid #43464B;
+.nav-bar {
+	background-color: #f8f8f8;
+	border-bottom: 1px #e7e7e7 solid;
+  width: 100%;
+  margin-bottom: 10px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+  #root, .app, .app>div, .large-menu-nav {
+    margin-top: 0;
   }
 
-  ul {
+  .nav-bar a{
+    text-decoration: none;
+    color: #777;
+    font-size: 15px;
+}
+
+  .nav-ul {
+    list-style: none;
     padding: 0;
   }
 
-  li {
+  .large-menu-nav li {
     display: inline;
     font-size: 13px;
-    list-style-type: none;
     margin-left: 30px;
   }
 
-  nav a {
-    text-decoration: none;
-    /* text-transform: uppercase; */
-    font-size: 20px;
-    color: #43464B;
-  }
-
   a:hover {
-      color: orange;
+      color:black;
   }
 
   @media screen and (max-width: 500px) {
     padding: 10px 0;
-    color: red;
     nav li {
       padding: 10px 0;
       display: block;
       margin-left: 0;
+    }
+
+    .small-menu-nav {
+      margin-top: 10px;
+    }
+    .small-menu-nav>li {
+      display: block;
     }
   }
 
