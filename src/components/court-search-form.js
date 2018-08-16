@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './court-search-form.css';
+import '../styles/court-search-form.css';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchCourts, setFilter, resetFilter} from '../actions/courts';
 import { FaSearch } from 'react-icons/fa';

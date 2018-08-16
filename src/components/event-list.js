@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchEvents, setPage } from '../actions/events';
 import moment from 'moment';
 
-import './event-list.css';
+import '../styles/event-list.css';
 
 
 export class EventList extends React.Component {
@@ -22,7 +22,7 @@ export class EventList extends React.Component {
   }
 
   render() {
-    let events = this.props.events.map(event => {
+    let events = this.props.events ? this.props.events.map(event => {
       return (<article key={event.id} className="col-12 event-list-event" role="contentinfo" aria-label="Court">
         <div className="event-list-event-title">
           <Link to={`/events/${event.id}`}><h2>{event.title}<sup><span className='event-list-event-date'> ({moment(event.time).format('MMM D')})</span></sup></h2></Link>
@@ -30,15 +30,15 @@ export class EventList extends React.Component {
         <div className="event-list-event-desc">{event.description}</div>
         <button className='see-more-button'><Link to={`/events/${event.id}`}>See more</Link></button>
       </article>);
-    });
+    }) : [];
 
     let nextBtn;
     let prevBtn;
     if (this.props.page > 0) {
-      prevBtn = <button class='prevBtn' onClick={() => this.previous()}>Previous</button>;
+      prevBtn = <button className='prevBtn' onClick={() => this.previous()}>Previous</button>;
     }
     if(this.props.events.length>4) {
-      nextBtn = <button class='nextBtn' onClick={this.next.bind(this)}>Next</button>;
+      nextBtn = <button className='nextBtn' onClick={this.next.bind(this)}>Next</button>;
     }
 
 

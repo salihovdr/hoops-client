@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-import './event.css';
+import '../styles/event.css';
 import { fetchSingleEvent, deleteSingleEvent } from '../actions/events';
 
 export class Event extends React.Component {
@@ -55,6 +55,7 @@ const mapStateToProps = (state, props) => {
   //const currentUser = state.auth.currentUser // --> How can I use this?
   const eventId = props.match.params.eventId;
   const event = state.event.singleEvent;
+  console.log(event);
   return Object.assign({}, event, {
     eventId
   });

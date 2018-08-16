@@ -22,7 +22,7 @@ export class Court extends React.Component {
   render() {
     let loginRequiredMessage;
     if (this.props.currentUser === null){
-      loginRequiredMessage = <p className='login-required-message'>You should login to create a new event</p>
+      loginRequiredMessage = <p className='login-required-message'>You should login to create a new event</p>;
     }
     const hours = Object.keys(this.props.hours).map((day, index) => {
       return <li key={index}><b>{day}</b>: {this.props.hours[day]}</li>;});
@@ -60,7 +60,7 @@ export class Court extends React.Component {
                   <div className='label-events'><strong>Events:</strong></div>
 
                   {loginRequiredMessage}
-                   <button className='createBtn' onClick={()=>this.create()}>Create NEW!</button>
+                  <button className='createBtn' onClick={()=>this.create()}>Create NEW!</button>
 
                   <ul className='single-court-events' >
                     { events }

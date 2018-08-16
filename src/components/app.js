@@ -50,7 +50,7 @@ export class App extends React.Component {
         {/* <Switch> */}
         <Route path="/:other" component={Navbar} />
         <Route exact path="/" component={Landing} />
-        <Route exact path="/user/:userId" component={User} />
+        <Route exact path="/users/:userId" component={User} />
         <Route exact path="/signup" component={SignUpPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/courts/:courtId" component={ Court } />

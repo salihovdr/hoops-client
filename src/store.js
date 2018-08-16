@@ -3,6 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import courtReducer from './reducers/courts';
 import eventReducer from './reducers/events';
+import userReducer from './reducers/users';
 import { loadAuthToken } from './local-storage';
 import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
@@ -14,6 +15,7 @@ const store = createStore(
     event: eventReducer,
     form: formReducer,
     auth: authReducer,
+    user: userReducer,
     protectedData: protectedDataReducer
   }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)

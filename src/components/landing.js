@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 
 import CourtSearchForm from './court-search-form';
-import './landing.css';
+import '../styles/landing.css';
 
 
 export function Landing(props) {

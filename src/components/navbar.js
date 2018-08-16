@@ -2,7 +2,7 @@
 import React from 'react';
 import ResponsiveMenu from 'react-responsive-navbar';
 import { connect } from 'react-redux';
-import './navbar.css';
+import '../styles/navbar.css';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
 import { Link } from 'react-router-dom';

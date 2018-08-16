@@ -99,8 +99,8 @@ export const deleteSingleEvent = eventId => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(event => {
       dispatch(deleteEvent(event));
-  });
-}
+    });
+};
 
 export const postEvent = (title, description, timestamp, courtId) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;

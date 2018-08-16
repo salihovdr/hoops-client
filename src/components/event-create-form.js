@@ -1,6 +1,6 @@
 import React from 'react';
 import requiresLogin from './requires-login';
-import './event-create-form.css';
+import '../styles/event-create-form.css';
 import { connect } from 'react-redux';
 import { postEvent } from '../actions/events';
 

@@ -1,35 +1,36 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
-import {fetchProtectedData} from '../actions/protected-data';
+import { fetchUser } from '../actions/users';
+import '../styles/user.css';
 
 export class User extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchProtectedData());
+    this.props.dispatch(fetchUser(this.props.userId));
   }
 
   render() {
     return (
-      <div className="user">
-        <div className="user-username">
-                    Username: {this.props.username}
-        </div>
-        <div className="user-name">Name: {this.props.name}</div>
-        <div className="user-protected-data">
-                    Protected data: {this.props.protectedData}
-        </div>
-      </div>
+      <main role='main' className='courts'>
+        <section className="row courtlist-header">
+          <div className='col-4 user'>
+            <div className="box">
+              <img className="single-court-img" src={this.props.photo} alt="userpic" />
+              <div className="user-name">{this.props.firstName} {this.props.lastName}</div>
+            </div>
+          </div>
+        </section>
+      </main>
     );
   }
 }
 
-const mapStateToProps = state => {
-  const {currentUser} = state.auth;
-  return {
-    username: state.auth.currentUser.username,
-    name: `${currentUser.firstName} ${currentUser.lastName}`,
-    protectedData: state.protectedData.data
-  };
+const mapStateToProps = (state, props) => {
+  const userId = props.match.params.userId;
+  const user = state.user.user;
+  return Object.assign({}, user, {
+    userId
+  });
 };
 
 export default requiresLogin()(connect(mapStateToProps)(User));

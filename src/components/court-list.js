@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCourts, resetFilter } from '../actions/courts';
 
-import './court-list.css';
+import '../styles/court-list.css';
 
 
 export class CourtList extends React.Component {
