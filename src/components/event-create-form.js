@@ -1,5 +1,5 @@
 import React from 'react';
-
+import requiresLogin from './requires-login';
 import './event-create-form.css';
 import { connect } from 'react-redux';
 import { postEvent } from '../actions/events';
@@ -87,4 +87,4 @@ const mapStateToProps = (state, props) => {
   });
 };
 
-export default connect(mapStateToProps)(EventForm);
+export default requiresLogin()(connect(mapStateToProps)(EventForm));

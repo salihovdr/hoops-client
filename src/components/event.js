@@ -52,6 +52,7 @@ export class Event extends React.Component {
 Event.defaultProps = { date: '', time: '', courtId: {}, userId: {} };
 
 const mapStateToProps = (state, props) => {
+  //const currentUser = state.auth.currentUser // --> How can I use this?
   const eventId = props.match.params.eventId;
   const event = state.event.singleEvent;
   return Object.assign({}, event, {

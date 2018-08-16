@@ -65,3 +65,15 @@ h1, h2 {
 .label-events {
 	margin-bottom: 20px;
 }
+
+.createBtn {
+	font-weight: 300;
+}
+
+.createBtn:hover {
+background-color: #f7cd96;
+}
+
+.login-required-message {
+	color: #cc0000;
+}

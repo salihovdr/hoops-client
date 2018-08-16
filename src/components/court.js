@@ -14,7 +14,16 @@ export class Court extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchSingleCourt(this.props.courtId));
   }
+
+  create(){
+    this.props.history.push(`/courts/${this.props.courtId}/create-event`);
+  }
+
   render() {
+    let loginRequiredMessage;
+    if (this.props.currentUser === null){
+      loginRequiredMessage = <p className='login-required-message'>You should login to create a new event</p>
+    }
     const hours = Object.keys(this.props.hours).map((day, index) => {
       return <li key={index}><b>{day}</b>: {this.props.hours[day]}</li>;});
     
@@ -50,7 +59,8 @@ export class Court extends React.Component {
 
                   <div className='label-events'><strong>Events:</strong></div>
 
-                  <Link className='create-new-event' to={`/courts/${this.props.courtId}/create-event`}>Create NEW!</Link>
+                  {loginRequiredMessage}
+                   <button className='createBtn' onClick={()=>this.create()}>Create NEW!</button>
 
                   <ul className='single-court-events' >
                     { events }
@@ -68,6 +78,7 @@ export class Court extends React.Component {
 Court.defaultProps = { hours: {}, address: {}, events: [] };
 
 const mapStateToProps = (state, props) => {
+  //const currentUser = state.auth.currentUser // --> How can I use this?
   const courtId = props.match.params.courtId;
   const court = state.court.singleCourt;
   return Object.assign({}, court, {
