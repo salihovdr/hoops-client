@@ -1,3 +1,60 @@
-li {
-  margin-bottom: 25px;
+
+.eventlist-heading {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.event-list-event-title a {
+  text-decoration: none;
+}
+
+.event-list-event-desc {
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.event-list-event-date {
+  color: orange;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.event-list-event-title, .event-list-event-desc {
+  line-height: 1.5;
+}
+
+.see-more-button a {
+	text-decoration: none;
+	font-weight: 300;
+}
+
+.see-more-button:hover {
+background-color: #f7cd96;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.nextBtn {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: 300;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.prevBtn {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: 300;
+  margin-right: 2px;
+}
+
+.prevBtn:hover, .nextBtn:hover {
+  background-color: #f7cd96;
+  cursor: pointer;
 }

@@ -1,40 +1,114 @@
-.event-create-form input {
-  width: 18.75rem;
-  height: 2.125rem;
-  line-height: 100%;
-  display: block;
-  padding: 0.8em 0;
-  margin: 0.8rem auto 0;
-  color: black;
-  border: solid 1px #1f253d;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+
+.event-create-form input[type=text] {
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid lightgray;
+    float: left;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 52px;
+    text-align: center;
+    font-weight: 100;
+    display: block;
+    margin-bottom: 15px;
+    color: rgb(51,51,51);
+}
+.event-create-form .eventDescription {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid lightgray;
+    float: left;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 100px;
+    text-align: center;
+    font-weight: 100;
+    display: block;
+    margin-bottom: 15px;
+    color: rgb(51,51,51);
 }
 
-#eventDescription {
-  width: 18.75rem;
-  height: 3.125rem;
-  display: block;
-  padding: 2em 0;
-  margin: 0.8rem auto 0;
-  color: black;
-  border: solid 1px #1f253d;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+.event-create-form .eventDate {
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid lightgray;
+    float: left;
+    width: 29%;
+    margin-left: 20%;
+    margin-right: 1%;
+    height: 52px;
+    text-align: center;
+    font-weight: 100;
+    display: block;
+    margin-bottom: 30px;
+    color: rgb(51,51,51);
+}
+.event-create-form .eventTime {
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid lightgray;
+    float: left;
+    width: 29%;
+    margin-right: 20%;
+    margin-left: 1%;
+    height: 52px;
+    text-align: center;
+    font-weight: 100;
+    display: block;
+    margin-bottom: 30px;
+    color: rgb(51,51,51);
 }
 
-button.button {
-  color: #fff;
-  font-size: 1em;
-  padding: 0.2em;
-  border: 1px solid orange;
+.event-form-heading {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.event-create-form button {
   background-color: orange;
+  color: rgb(255, 255, 255);
+  height: 45px;
+  width: 150px;
+  margin: 0 auto;
+  display: block;
 }
+
+.event-create-form button:hover {
+    background: #f7cd96;
+    cursor: pointer;
+}
+
+.see-all-courts:hover {
+    background-color: #f7cd96;
+}
+
+@media screen and (max-width: 755px) {
+    .event-create-form input[type=text] {
+      font-size: 16px;
+    }
 
 #eventTitle, #eventDescription, #eventDate, #eventTime  {
   text-align: center;
   padding: 0.2em;
   font-size: 1.2em;
+}
+
+.event-form-heading {
+  margin-top: 60px;
+  text-align: center;
+}
+}
+
+@media screen and (max-width: 375px) {
+    .event-create-form input[type=text], .event-create-form .eventDescription {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.event-form-heading {
+    font-size: 25px;
+}
 }

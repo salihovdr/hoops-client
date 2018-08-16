@@ -19,21 +19,24 @@ export class Event extends React.Component {
     const time = moment(timeToFormat).format('hh:mm');
 
     return (
-      <main>
-        <div className="single-event">
-          <h1>{this.props.title}</h1>
-          <div className="single-event-desc">{this.props.description}</div>
-          <div><strong>Where: </strong><Link to={`/courts/${this.props.courtId.id}`}><span className="single-event-courtName">{this.props.courtId.name}</span></Link></div>
-          <div><strong>Date: </strong><span className="single-event-date">{date}</span></div>
-          <div><strong>Time: </strong><span className="single-event-time">{time}</span></div>
-          <Link to={'/events'}>See all events</Link>
-        </div>
+      <main role='main' className='single-event'>
+        <section className='row'>
+          <div className="col-12 single-event-info">
+            <h1 className='single-event-title'>{this.props.title}</h1>
+            <div className="single-event-desc">{this.props.description}</div>
+            <div className="single-event-courtName"><strong>Where: </strong><Link to={`/courts/${this.props.courtId.id}`}><span>{this.props.courtId.name}</span></Link></div>
+            <div className="single-event-date"><strong>Date: </strong><span>{date}</span></div>
+            <div className="single-event-time"><strong>Time: </strong><span>{time}</span></div>
+            <div className="single-event-host"><strong>Host: </strong><Link to={`/users/${this.props.userId.id}`}><span>{this.props.userId.username}</span></Link></div>
+            <Link className='see-all-events' to={'/events'}>See all events</Link>
+          </div>
+        </section>
       </main>
     );
   }
 }
 
-Event.defaultProps = { date: '', time: '', courtId: {} };
+Event.defaultProps = { date: '', time: '', courtId: {}, userId: {} };
 
 const mapStateToProps = (state, props) => {
   const eventId = props.match.params.eventId;

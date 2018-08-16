@@ -1,0 +1,24 @@
+
+.signup-page-heading {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.login-para {
+  text-align: center;
+  font-weight: 300;
+  font-size: 15px;
+  margin-top: 30px;
+}
+
+.login-link {
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.login-link > span {
+  background: #f7cd96;
+}

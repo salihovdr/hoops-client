@@ -2,30 +2,30 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
-import LoginForm from './login-form';
-import './login-page.css';
+import SignUpForm from './signup-form';
+import './signup-page.css';
 
-export function LoginPage(props) {
+export function SignUpPage(props) {
   // If we are logged in (which happens automatically when registration
   // is successful) redirect to the user's profile page
   if (props.loggedIn) {
     return <Redirect to="/" />;
   }
   return (
-    <main role='main' className='login-page'>
+    <main role='main' className='signup-page'>
       <section className='row home'>
         <div className="col-12">
-          <h1 className='login-page-heading'>Login</h1>
+          <h1 className='signup-page-heading'>Sign up</h1>
         </div>
         <div className="col-12">
-          <LoginForm />
+          <SignUpForm />
         </div>
         <div className="col-12">
-          <p className='signup-para'>Don't have an account yet?</p>
-          <p><Link className='signup-link' to="/signup"><span>Sign up now!</span></Link></p>
+          <p className='login-para'>Already have an account?</p>
+          <p><Link className='login-link' to="/login"><span>Log in now!</span></Link></p>
         </div>
       </section>
-    </main>
+    </main >
   );
 }
 
@@ -33,4 +33,4 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps)(SignUpPage);

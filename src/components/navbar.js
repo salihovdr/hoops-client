@@ -40,10 +40,8 @@ export class Navbar extends React.Component {
         menu={
           <header role="navigation" className="nav-bar">
             <section className="row">
-              <ul className='nav-ul col-12'>
-                <li>
-                  <Link to='/'>Home</Link>
-                </li>
+              <Link className='col-6 left' to='/'><strong>Let's Hoop</strong></Link>
+              <ul className='nav-ul col-6 right'>
                 <li>
                   <Link to={'/courts'} onClick={() => this.showAllCourts()}>Courts</Link>
                 </li>

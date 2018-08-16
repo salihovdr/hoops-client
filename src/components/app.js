@@ -10,7 +10,7 @@ import EventForm from './event-create-form';
 import EventList from './event-list';
 import Event from './event';
 import User from './user';
-import RegistrationPage from './registration-page';
+import SignUpPage from './signup-page';
 import {refreshAuthToken} from '../actions/auth';
 import LoginPage from './login-page';
 
@@ -50,8 +50,8 @@ export class App extends React.Component {
         {/* <Switch> */}
         <Route path="/:other" component={Navbar} />
         <Route exact path="/" component={Landing} />
-        <Route exact path="/user" component={User} />
-        <Route exact path="/register" component={RegistrationPage} />
+        <Route exact path="/user/:userId" component={User} />
+        <Route exact path="/signup" component={SignUpPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/courts/:courtId" component={ Court } />
         <Route exact path="/courts" component={ CourtList } />

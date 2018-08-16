@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import { fetchSingleCourt } from '../actions/courts';
 
@@ -21,7 +22,7 @@ export class Court extends React.Component {
       return <li key={index}>{this.props.address[field]}</li>;});
 
     const events = this.props.events.map((event) => {
-      return <li key={event.id}><Link to={`/events/${event.id}`}>{event.title}</Link></li>;
+      return <li className='single-court-event-title' key={event.id}><span>{moment(event.time).format('MMM D')}</span> -- <Link to={`/events/${event.id}`}>{event.title}</Link></li>;
     });
 
     return (
@@ -46,10 +47,13 @@ export class Court extends React.Component {
                   </ul>
                 </div>
                 <div className='col-4'>
-                  <div className='label'><strong>Events:</strong></div>
+
+                  <div className='label-events'><strong>Events:</strong></div>
+
+                  <Link className='create-new-event' to={`/courts/${this.props.courtId}/create-event`}>Create NEW!</Link>
+
                   <ul className='single-court-events' >
-                    { events  }
-                    <Link className='create-new-event' to={`/courts/${this.props.courtId}/create-event`}>Create NEW!</Link>
+                    { events }
                   </ul>
                 </div>
               </div>

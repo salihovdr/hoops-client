@@ -25,11 +25,16 @@ export class CourtList extends React.Component {
     }
     if(this.props.courts.length < 1) {
       return ( 
-        <main>
-          <header>
-            {heading}
-          </header>
-          <div>Unfortunately, there are no courts in this area. See <a href='' onClick={() => this.showAllCourts()}>all courts</a> or try a <Link to='/'>new search</Link></div>
+        <main role='main' className='courts'>
+          <section className="row courtlist-header">
+            <div className='col-12'>
+              {heading}
+            </div>
+            <div className='col-12 no-courts-found'>
+              <p className='no-courts-para'>Unfortunately, there are no courts in this area.</p>
+              <p>See <a href='' onClick={() => this.showAllCourts()}>all courts</a> or try a <Link to='/'> new search</Link></p>
+            </div>
+          </section>
         </main>
       );
     }
@@ -40,6 +45,7 @@ export class CourtList extends React.Component {
           <div className="court-brief">
             <h2><Link to={`/courts/${court.id}`}>{court.name}</Link></h2>
             <p className='description'>{court.description}</p>
+            <button className='see-more-btn'><Link to={`/courts/${court.id}`}>See more</Link></button>
           </div>
         </div>
       </article>

@@ -1,0 +1,28 @@
+.single-event-title {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.single-event-desc, .single-event-courtName, .single-event-date, .single-event-time, .single-event-host {
+  margin-bottom: 10px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.see-all-events {
+  display: inline-block;
+  margin-top: 25px;
+  background-color: #f7cd96;
+  font-weight: 300;
+}
+
+.see-all-events:hover {
+  background-color: orange;
+}
+
+.single-event-info {
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+}

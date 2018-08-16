@@ -3,3 +3,58 @@
   margin-bottom: 25px;
   text-align: center;
 }
+
+.description {
+	font-size: 14px;
+	font-weight: 300;
+	color: #777;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-decoration: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 1.7;
+}
+
+.court-brief > h2 {
+	font-size: 17px;
+	color: #777;
+	font-weight: 700;
+	margin-bottom: 5px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.court-brief > h2 > a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.courts-near-you {
+	margin-bottom: 30px;
+	font-weight: 300;
+}
+
+.no-courts-found {
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.no-courts-found>p>a {
+  text-decoration: none;
+  background-color: #f7cd96;
+}
+
+.see-more-btn a {
+	text-decoration: none;
+	font-weight: 100;
+}
+
+.see-more-btn:hover {
+background-color: #f7cd96;
+}
+
+.see-more-btn {
+	margin: 10px;
+}

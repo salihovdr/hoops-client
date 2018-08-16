@@ -7,6 +7,12 @@ import { normalizeResponseErrors } from './utils';
 //   type: FETCH_EVENTS_REQUEST
 // });
 
+export const SET_PAGE = 'SET_PAGE';
+export const setPage = page => ({
+  type: SET_PAGE,
+  page
+});
+
 export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS';
 export const fetchEventsSuccess = events => ({
   type: FETCH_EVENTS_SUCCESS,
@@ -41,8 +47,8 @@ export const createEvent = (title, description, date, time, courtId) => ({
   courtId
 });
 
-export const fetchEvents = () => dispatch => {
-  return fetch(`${API_BASE_URL}/events`)
+export const fetchEvents = (page=0) => dispatch => {
+  return fetch(`${API_BASE_URL}/events?page=${page}`)
     .then(res => {
       if (!res.ok) {
         throw new Error(res.statusText);

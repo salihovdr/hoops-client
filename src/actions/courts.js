@@ -65,7 +65,7 @@ export const fetchCourts = filter => dispatch => {
 };
 
 export const fetchSingleCourt = id => dispatch => {
-  //dispatch(fetchCourtsRequest(id));
+  dispatch(fetchCourtsRequest(id));
   return fetch(`${API_BASE_URL}/courts/${id}`)
     .then(res => {
       if (!res.ok) {

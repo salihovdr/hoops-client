@@ -1,15 +1,12 @@
-/* body {
-  background-image: 
-    url('https://images.unsplash.com/photo-1530653791257-9ba248735445?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b7a8396a20dca082d96d43304f3337af&auto=format&fit=crop&w=1951&q=80');
-    background-size: cover;
-		background-repeat: no-repeat;
-		height: 100vh;
-} */
 
 * {
 	box-sizing: border-box;
 	font-family: 'Montserrat', sans-serif;
 	color: #333;
+}
+
+html {
+	margin-bottom: 30px;
 }
 
 header * {
@@ -40,52 +37,31 @@ h1, h2 {
   width: 100%
 }
 
-.description {
-	font-size: 14px;
-	color: #777;
-	margin-top: 0;
-	margin-bottom: 25px;
-	text-decoration: none;
-	padding-left: 10px;
-	padding-right: 10px;
-	line-height: 1.7;
-}
-
-.court-brief > h2 {
-	font-size: 17px;
-	color: #777;
-	font-weight: 700;
-	margin-bottom: 5px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-.court-brief > h2 > a {
-	text-decoration: none;
-	cursor: pointer;
-}
-
 .single-court-name, .single-court-desc {
 	padding-left: 20px;
 }
 .single-court-desc {
 	margin-bottom: 40px;
+	font-weight: 300;
 }
 
 .single-court-address, .single-court-hours, .single-court-events {
     list-style: none;
-    padding: 0;
+		padding: 0;
+		font-weight: 300;
+		line-height: 2;
 }
 
 .create-new-event {
+	background-color: #f7cd96;
+	text-decoration: none;
+	font-weight: 300;
+}
+
+.create-new-event:hover {
 	background-color: orange;
 }
 
-.create-new-event>a {
-	text-decoration: none;
-}
-
-.courts-near-you {
-	margin-bottom: 30px;
+.label-events {
+	margin-bottom: 20px;
 }

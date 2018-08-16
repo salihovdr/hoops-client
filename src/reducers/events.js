@@ -3,6 +3,7 @@ import * as actions from '../actions/events';
 const initialState = {
   error: null,
   events: [],
+  page: 0,
   singleEvent: null
 };
 
@@ -12,6 +13,10 @@ export default (state = initialState, action) => {
     return Object.assign(
       {}, state,
       { events: [...state.events, { title: action.title, description: action.description, courtId: action.courtId, time: action.time, date: action.date }] });
+  }
+
+  else if (action.type === actions.SET_PAGE) {
+    return Object.assign({}, state, { page:action.page});
   }
 
   else if (action.type === actions.FETCH_EVENTS_SUCCESS) {
