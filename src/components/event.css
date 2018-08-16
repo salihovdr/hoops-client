@@ -10,15 +10,18 @@
   line-height: 1.5;
 }
 
-.see-all-events {
-  display: inline-block;
-  margin-top: 25px;
-  background-color: #f7cd96;
-  font-weight: 300;
+.allEventsBtn, .deleteBtn {
+	font-weight: 300;
 }
 
-.see-all-events:hover {
-  background-color: orange;
+.allEventsBtn:hover, .deleteBtn:hover {
+background-color: #f7cd96;
+}
+
+.deleteBtn {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: block;
 }
 
 .single-event-info {

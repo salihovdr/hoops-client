@@ -15,6 +15,11 @@ export default (state = initialState, action) => {
       { events: [...state.events, { title: action.title, description: action.description, courtId: action.courtId, time: action.time, date: action.date }] });
   }
 
+  else if (action.type === actions.DELETE_EVENT) {
+    return Object.assign({}, state, { events: state.events.filter(event => event.id 
+      !== action.eventId)})
+  }
+
   else if (action.type === actions.SET_PAGE) {
     return Object.assign({}, state, { page:action.page});
   }

@@ -5,13 +5,25 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import './event.css';
-import { fetchSingleEvent } from '../actions/events';
+import { fetchSingleEvent, deleteSingleEvent } from '../actions/events';
 
 export class Event extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(fetchSingleEvent(this.props.eventId));
   }
+
+  delete() {
+    this.props.dispatch(deleteSingleEvent(this.props.eventId))
+      .then(() => {
+        this.props.history.push(`/courts/${this.props.courtId.id}`);
+      })
+  }
+
+  seeAllEvents(){
+    this.props.history.push('/events');
+  }
+
   render() {
     const dateToFormat = this.props.time;
     const timeToFormat = this.props.time;
@@ -28,7 +40,8 @@ export class Event extends React.Component {
             <div className="single-event-date"><strong>Date: </strong><span>{date}</span></div>
             <div className="single-event-time"><strong>Time: </strong><span>{time}</span></div>
             <div className="single-event-host"><strong>Host: </strong><Link to={`/users/${this.props.userId.id}`}><span>{this.props.userId.username}</span></Link></div>
-            <Link className='see-all-events' to={'/events'}>See all events</Link>
+            <button className='deleteBtn' onClick={() => { if (window.confirm('Are you sure you wish to delete this event?')) this.delete() } }>Delete</button>
+            <button className='allEventsBtn' onClick={()=>this.seeAllEvents()}>Go to all events</button>
           </div>
         </section>
       </main>

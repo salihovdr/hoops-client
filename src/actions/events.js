@@ -13,6 +13,12 @@ export const setPage = page => ({
   page
 });
 
+export const DELETE_EVENT = 'DELETE_EVENT';
+export const deleteEvent = eventId => ({
+  type: DELETE_EVENT,
+  eventId
+});
+
 export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS';
 export const fetchEventsSuccess = events => ({
   type: FETCH_EVENTS_SUCCESS,
@@ -64,7 +70,6 @@ export const fetchEvents = (page=0) => dispatch => {
 };
 
 export const fetchSingleEvent = id => dispatch => {
-  //dispatch(fetchEventsRequest(id));
   return fetch(`${API_BASE_URL}/events/${id}`)
     .then(res => {
       if (!res.ok) {
@@ -79,6 +84,23 @@ export const fetchSingleEvent = id => dispatch => {
       dispatch(fetchSingleEventError(err));
     });
 };
+
+export const deleteSingleEvent = eventId => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/events/${eventId}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${authToken}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ eventId })
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(event => {
+      dispatch(deleteEvent(event));
+  });
+}
 
 export const postEvent = (title, description, timestamp, courtId) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
