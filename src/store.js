@@ -6,7 +6,6 @@ import eventReducer from './reducers/events';
 import userReducer from './reducers/users';
 import { loadAuthToken } from './local-storage';
 import authReducer from './reducers/auth';
-import protectedDataReducer from './reducers/protected-data';
 import { setAuthToken, refreshAuthToken } from './actions/auth';
 
 const store = createStore(
@@ -15,8 +14,7 @@ const store = createStore(
     event: eventReducer,
     form: formReducer,
     auth: authReducer,
-    user: userReducer,
-    protectedData: protectedDataReducer
+    user: userReducer
   }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)
 );

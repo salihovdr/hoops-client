@@ -1,12 +1,12 @@
 import React from 'react';
 import moment from 'moment'
 import requiresLogin from './requires-login';
-import '../styles/event-create-form.css';
 import { connect } from 'react-redux';
-import { postEvent } from '../actions/events';
+import { putEvent } from '../actions/events';
 
+import '../styles/event-create-form.css';
 
-export class EventForm extends React.Component {
+export class EventEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { warning: null };
@@ -19,7 +19,7 @@ export class EventForm extends React.Component {
     const courtId = this.props.courtId;
     const timestamp = {date: this.date.value, time: this.time.value};
   
-    this.props.dispatch(postEvent(title, description, timestamp, courtId))
+    this.props.dispatch(putEvent(title, description, timestamp, courtId))
       .then(() => {
         this.props.history.push(`/courts/${this.props.courtId}`);
       });
@@ -36,20 +36,14 @@ export class EventForm extends React.Component {
 
   render() {
     return (
-      <main role='main' className='event-create-form'>
-        <section className='row'>
-          <div className="col-12">
-            <h1 className='event-form-heading'>Create new event</h1>
-          </div>
-          <div className="col-12">
             <form onSubmit={e => this.onSubmit(e)}>
+            <label htmlFor='eventTitle'>Event title</label>
               <input
                 type="text"
                 name="eventTitle"
                 id="eventTitle"
                 className="eventTitle"
                 ref={title => (this.title = title)}
-                placeholder="Event title..."
                 required
               />
               <textarea 
@@ -89,19 +83,12 @@ export class EventForm extends React.Component {
           Submit
               </button>
             </form>
-          </div>
-        </section>
-      </main>
-    );
+    )
   }
 }
 
-const mapStateToProps = (state, props) => {
-  const courtId = props.match.params.courtId;
-  const court = state.courts;
-  return Object.assign({}, court, {
-    courtId
-  });
-};
+const mapStateToProps = state => ({
+  currentUser: state.auth.currentUser
+});
 
-export default requiresLogin()(connect(mapStateToProps)(EventForm));
+export default requiresLogin()(connect(mapStateToProps)(EventEditForm));

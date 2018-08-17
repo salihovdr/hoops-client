@@ -53,6 +53,16 @@ export const createEvent = (title, description, date, time, courtId) => ({
   courtId
 });
 
+// export const UPDATE_EVENT = 'UPDATE_EVENT';
+// export const updateEvent = (title, description, date, time, courtId) => ({
+//   type: UPDATE_EVENT,
+//   title,
+//   description,
+//   date,
+//   time,
+//   courtId
+// });
+
 export const fetchEvents = (page=0) => dispatch => {
   return fetch(`${API_BASE_URL}/events?page=${page}`)
     .then(res => {
@@ -119,8 +129,22 @@ export const postEvent = (title, description, timestamp, courtId) => (dispatch, 
     .then(event => {
       dispatch(createEvent(event));
     });
-  //is this necessary?
-  // .catch(err => {
-  //   dispatch(createEventError(err));
-  // });
 };
+
+// export const putEvent = (title, description, timestamp, courtId) => (dispatch, getState) => {
+//   const authToken = getState().auth.authToken;
+//   return fetch(`${API_BASE_URL}/events/${courtId}`, {
+//     method: 'PUT',
+//     headers: {
+//       'Authorization': `Bearer ${authToken}`,
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ title, description, timestamp, courtId })
+//   })
+//     .then(res => normalizeResponseErrors(res))
+//     .then(res => res.json())
+//     .then(event => {
+//       dispatch(updateEvent(event));
+//     });
+// };

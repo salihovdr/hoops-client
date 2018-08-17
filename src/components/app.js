@@ -7,6 +7,7 @@ import Landing from './landing';
 import CourtList from './court-list';
 import Court from './court';
 import EventForm from './event-create-form';
+// import EventEditPage from './event-edit-page';
 import EventList from './event-list';
 import Event from './event';
 import User from './user';
@@ -57,6 +58,7 @@ export class App extends React.Component {
         <Route exact path="/courts/:courtId" component={ Court } />
         <Route exact path="/courts" component={ CourtList } />
         <Route exact path="/courts/:courtId/create-event" component={ EventForm} />
+        {/* <Route exact path="/events/:eventId/edit-event" component={ EventEditPage} /> */}
         <Route exact path="/events" component={ EventList } />
         <Route exact path="/events/:eventId" component={ Event } />
         {/* </Switch> */}

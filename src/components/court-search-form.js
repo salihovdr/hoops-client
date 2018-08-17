@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
-import { fetchCourts, setFilter, resetFilter} from '../actions/courts';
+import { withRouter } from 'react-router-dom';
+import { fetchCourts, setFilter} from '../actions/courts';
 import { FaSearch } from 'react-icons/fa';
 
 import '../styles/court-search-form.css';
@@ -16,10 +16,6 @@ export class CourtSearchForm extends React.Component {
     this.props.history.push('/courts');
   }
 
-  showAllCourts() {
-    this.props.dispatch(resetFilter());
-  }
-
   render(){
     return (
       <main role='main' className='court-search-form'>
@@ -29,7 +25,7 @@ export class CourtSearchForm extends React.Component {
               <input
                 type="text" name="courtName" id="courtName"
                 className="court-search-input"
-                placeholder="Enter your 5-digit zipcode"
+                placeholder="Enter your 5-digit zipcode, i.e. 22207..."
                 ref={input => (this.input = input)}
                 required />
               <button type="submit" name="submit"
@@ -37,7 +33,6 @@ export class CourtSearchForm extends React.Component {
                 <FaSearch/>
               </button>
             </form>
-            <Link className="see-all-courts" to={'/courts'} onClick={() => this.showAllCourts()}> ... or see all courts</Link>
           </div>
         </div>
       </main>
