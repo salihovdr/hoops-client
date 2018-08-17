@@ -2,11 +2,6 @@
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
 
-// export const FETCH_EVENTS_REQUEST = 'FETCH_EVENTS_REQUEST';
-// export const fetchEventsRequest = () => ({
-//   type: FETCH_EVENTS_REQUEST
-// });
-
 export const SET_PAGE = 'SET_PAGE';
 export const setPage = page => ({
   type: SET_PAGE,
@@ -52,16 +47,6 @@ export const createEvent = (title, description, date, time, courtId) => ({
   time,
   courtId
 });
-
-// export const UPDATE_EVENT = 'UPDATE_EVENT';
-// export const updateEvent = (title, description, date, time, courtId) => ({
-//   type: UPDATE_EVENT,
-//   title,
-//   description,
-//   date,
-//   time,
-//   courtId
-// });
 
 export const fetchEvents = (page=0) => dispatch => {
   return fetch(`${API_BASE_URL}/events?page=${page}`)
@@ -130,21 +115,3 @@ export const postEvent = (title, description, timestamp, courtId) => (dispatch, 
       dispatch(createEvent(event));
     });
 };
-
-// export const putEvent = (title, description, timestamp, courtId) => (dispatch, getState) => {
-//   const authToken = getState().auth.authToken;
-//   return fetch(`${API_BASE_URL}/events/${courtId}`, {
-//     method: 'PUT',
-//     headers: {
-//       'Authorization': `Bearer ${authToken}`,
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({ title, description, timestamp, courtId })
-//   })
-//     .then(res => normalizeResponseErrors(res))
-//     .then(res => res.json())
-//     .then(event => {
-//       dispatch(updateEvent(event));
-//     });
-// };

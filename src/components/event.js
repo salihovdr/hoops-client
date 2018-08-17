@@ -28,9 +28,8 @@ export class Event extends React.Component {
   }
 
   render() {
-    const dateToFormat = this.props.eventWithId.time;
     const timeToFormat = this.props.eventWithId.time;
-    const date = moment(dateToFormat).format('MM/DD/YYYY');
+    const date = moment(timeToFormat).format('MM/DD/YYYY');
     const time = moment(timeToFormat).format('hh:mm');
     const court = this.props.eventWithId.courtId || '';
     const user = this.props.eventWithId.userId || '';
