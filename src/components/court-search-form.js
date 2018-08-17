@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import '../styles/court-search-form.css';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchCourts, setFilter, resetFilter} from '../actions/courts';
 import { FaSearch } from 'react-icons/fa';
+
+import '../styles/court-search-form.css';
 
 export class CourtSearchForm extends React.Component {
   

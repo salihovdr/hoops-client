@@ -17,20 +17,20 @@ export class EventForm extends React.Component {
     const title = this.title.value;
     const description = this.description.value;
     const courtId = this.props.courtId;
-    const timestamp = { date: this.date.value, time: this.time.value };
-
+    const timestamp = {date: this.date.value, time: this.time.value};
+  
     this.props.dispatch(postEvent(title, description, timestamp, courtId))
       .then(() => {
         this.props.history.push(`/courts/${this.props.courtId}`);
       });
   }
-
-  handleChange(val) {
+  
+  handleChange(val){
     let date = new Date();
     if (!moment(val).isAfter(date)) {
-      this.setState({ warning: <div className="form-warning">Event date cannot be in the past</div> });
+      this.setState({warning: <div className="form-warning">Event date cannot be in the past</div>});
     } else {
-      this.setState({ warning: '' });
+      this.setState({warning:''});
     }
   }
 
@@ -52,7 +52,7 @@ export class EventForm extends React.Component {
                 placeholder="Event title..."
                 required
               />
-              <textarea
+              <textarea 
                 ref={description => (this.description = description)}
                 name="eventDescription"
                 id="eventDescription"
@@ -66,7 +66,7 @@ export class EventForm extends React.Component {
                 id="eventDate"
                 className="eventDate"
                 ref={date => (this.date = date)}
-                onChange={(e) => this.handleChange(e.target.value)}
+                onChange={(e)=>this.handleChange(e.target.value)}
                 placeholder="Date"
                 required
               />
@@ -79,14 +79,14 @@ export class EventForm extends React.Component {
                 placeholder="Time"
                 required
               />
-
-              <button
+        
+              <button 
                 type="submit"
                 name="submit"
-                id="submitButton"
+                id="submitButton" 
                 className="button"
               >
-                Submit
+          Submit
               </button>
             </form>
           </div>

@@ -23,13 +23,13 @@ export class EventList extends React.Component {
 
   render() {
     let events = this.props.events ? this.props.events.map(event => {
-      return (<article key={event.id} className="col-12 event-list-event" role="contentinfo" aria-label="Court">
+      return event ? (<article key={event.id} className="col-12 event-list-event" role="contentinfo" aria-label="Court">
         <div className="event-list-event-title">
           <Link to={`/events/${event.id}`}><h2>{event.title}<sup><span className='event-list-event-date'> ({moment(event.time).format('MMM D')})</span></sup></h2></Link>
         </div>
         <div className="event-list-event-desc">{event.description}</div>
         <button className='see-more-button'><Link to={`/events/${event.id}`}>See more</Link></button>
-      </article>);
+      </article>) : {};
     }) : [];
 
     let nextBtn;
@@ -38,7 +38,7 @@ export class EventList extends React.Component {
       prevBtn = <button className='prevBtn' onClick={() => this.previous()}>Previous</button>;
     }
     if(this.props.events.length>4) {
-      nextBtn = <button className='nextBtn' onClick={this.next.bind(this)}>Next</button>;
+      nextBtn = <button className='nextBtn' id='nextButton' onClick={this.next.bind(this)}>Next</button>;
     }
 
 

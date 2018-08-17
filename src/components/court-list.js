@@ -69,8 +69,6 @@ export class CourtList extends React.Component {
   }
 }
 
-// CourtList.defaultProps={ courts: [] };
-
 const mapStateToProps = state => ({
   courts: state.court.courts,
   filter: state.court.filter

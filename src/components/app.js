@@ -14,13 +14,14 @@ import SignUpPage from './signup-page';
 import {refreshAuthToken} from '../actions/auth';
 import LoginPage from './login-page';
 
+import '../grid.css';
+import '../main.css';
+
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
     if (!prevProps.loggedIn && this.props.loggedIn) {
-      // When we are logged in, refresh the auth token periodically
       this.startPeriodicRefresh();
     } else if (prevProps.loggedIn && !this.props.loggedIn) {
-      // Stop refreshing when we log out
       this.stopPeriodicRefresh();
     }
   }
@@ -32,7 +33,7 @@ export class App extends React.Component {
   startPeriodicRefresh() {
     this.refreshInterval = setInterval(
       () => this.props.dispatch(refreshAuthToken()),
-      60 * 60 * 1000 // One hour
+      60 * 60 * 1000
     );
   }
 
@@ -65,11 +66,8 @@ export class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  // courts: state.court.courts,
-  // filter: state.court.filter,
   hasAuthToken: state.auth.authToken !== null,
   loggedIn: state.auth.currentUser !== null
 });
 
-// Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
 export default withRouter(connect(mapStateToProps)(App));

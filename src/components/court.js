@@ -6,8 +6,7 @@ import moment from 'moment';
 
 import { fetchSingleCourt } from '../actions/courts';
 
-import '../main.css';
-import '../grid.css';
+import '../styles/court.css';
 
 export class Court extends React.Component {
   

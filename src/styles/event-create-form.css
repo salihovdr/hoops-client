@@ -85,6 +85,16 @@
     background-color: #f7cd96;
 }
 
+.form-warning {
+    color: #cc0000;
+    font-weight: 300;
+    width: 30%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
 @media screen and (max-width: 755px) {
     .event-create-form input[type=text] {
       font-size: 16px;

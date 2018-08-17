@@ -18,6 +18,10 @@
 background-color: #f7cd96;
 }
 
+.allEventsBtn {
+  margin-top: 15px;
+}
+
 .deleteBtn {
   margin-top: 15px;
   margin-bottom: 15px;

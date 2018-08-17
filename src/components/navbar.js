@@ -8,6 +8,7 @@ import { clearAuthToken } from '../local-storage';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { resetFilter } from '../actions/courts';
+import { fetchEvents } from '../actions/events';
 
 export class Navbar extends React.Component {
   logOut() {
@@ -18,11 +19,13 @@ export class Navbar extends React.Component {
   showAllCourts() {
     this.props.dispatch(resetFilter());
   }
+  showAllEvents() {
+    this.props.dispatch(fetchEvents())
+      .then(() => this.props.history.push('/events'));
+  }
 
   render() {
-    // Only render the log out button if we are logged in
     let logInOut = (<Link to="/login">Login/Signup</Link>);
-
 
     if (this.props.loggedIn) {
       logInOut = (
@@ -43,10 +46,10 @@ export class Navbar extends React.Component {
               <Link className='col-6 left' to='/'><strong>Let's Hoop</strong></Link>
               <ul className='nav-ul col-6 right'>
                 <li>
-                  <Link to={'/courts'} onClick={() => this.showAllCourts()}>Courts</Link>
+                  <Link to='/courts' onClick={() => this.showAllCourts()}>Courts</Link>
                 </li>
                 <li>
-                  <Link to='/events'>Events</Link>
+                  <Link to='' onClick={() => this.showAllEvents()}>Events</Link>
                 </li>
                 <li>
                   {logInOut}
