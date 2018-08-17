@@ -10,22 +10,26 @@
   line-height: 1.5;
 }
 
-.allEventsBtn, .deleteBtn {
+.single-event-host {
+  margin-bottom: 30px;
+}
+
+.allEventsBtn, .deleteBtn, .editBtn {
 	font-weight: 300;
 }
 
-.allEventsBtn:hover, .deleteBtn:hover {
+.allEventsBtn:hover, .deleteBtn:hover, .editBtn:hover {
 background-color: #f7cd96;
 }
 
 .allEventsBtn {
-  margin-top: 15px;
+  margin-top: 25px;
+  display: block;
 }
 
-.deleteBtn {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  display: block;
+.deleteBtn, .editBtn {
+  display: inline;
+  margin-right: 10px;
 }
 
 .single-event-info {

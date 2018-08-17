@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import '../styles/event.css';
-import { fetchSingleEvent, deleteSingleEvent, fetchEvents } from '../actions/events';
+import { fetchSingleEvent, deleteSingleEvent, fetchEvents, setEditMode } from '../actions/events';
 
 export class Event extends React.Component {
 
@@ -18,6 +18,10 @@ export class Event extends React.Component {
       .then(() => {
         this.props.history.push(`/courts/${this.props.eventWithId.courtId.id}`);
       });
+  }
+
+  edit() {
+    this.props.dispatch(setEditMode());
   }
 
   seeAllEvents(){
@@ -35,8 +39,10 @@ export class Event extends React.Component {
     const user = this.props.eventWithId.userId || '';
     const currentUser = this.props.currentUser || {};
     let deleteBtn;
+    let editBtn;
     if (currentUser.id === user.id) {
       deleteBtn = <button className='deleteBtn' onClick={() => { if (window.confirm('Are you sure you wish to delete this event?')) this.delete(); }}>Delete</button>;
+      editBtn = <button className='editBtn' onClick={() => this.edit() }>Edit</button>;
     }
 
     return (
@@ -50,6 +56,7 @@ export class Event extends React.Component {
             <div className="single-event-time"><strong>Time: </strong><span>{time}</span></div>
             <div className="single-event-host"><strong>Host: </strong><Link to={`/users/${user.id}`}><span>{user.username}</span></Link></div>
             {deleteBtn}
+            {editBtn}
             <button className='allEventsBtn' onClick={()=>this.seeAllEvents()}>Go to all events</button>
           </div>
         </section>

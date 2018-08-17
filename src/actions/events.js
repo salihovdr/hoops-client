@@ -14,6 +14,26 @@ export const deleteEvent = eventId => ({
   eventId
 });
 
+export const SET_EDIT_MODE = 'SET_EDIT_MODE';
+export const setEditMode = () => ({
+  type: SET_EDIT_MODE
+});
+
+export const RESET_EDIT_MODE = 'RESET_EDIT_MODE';
+export const resetEditMode = () => ({
+  type: RESET_EDIT_MODE
+});
+
+export const UPDATE_EVENT = 'UPDATE_EVENT';
+export const updateEvent = (title, description, date, time, courtId) => ({
+  type: UPDATE_EVENT,
+  title,
+  description,
+  date,
+  time,
+  courtId
+});
+
 export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS';
 export const fetchEventsSuccess = events => ({
   type: FETCH_EVENTS_SUCCESS,
@@ -115,3 +135,21 @@ export const postEvent = (title, description, timestamp, courtId) => (dispatch, 
       dispatch(createEvent(event));
     });
 };
+
+export const putEvent = (title, description, timestamp, courtId, eventId) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/events/${eventId}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${authToken}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ title, description, timestamp, courtId })
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(event => {
+      dispatch(updateEvent(event));
+    });
+}; 

@@ -4,7 +4,8 @@ const initialState = {
   error: null,
   events: [],
   page: 0,
-  singleEvent: null
+  singleEvent: null,
+  editing: false
 };
 
 export default (state = initialState, action) => {
@@ -17,7 +18,21 @@ export default (state = initialState, action) => {
 
   else if (action.type === actions.DELETE_EVENT) {
     return Object.assign({}, state, { events: state.events.filter(event => event.id 
-      !== action.eventId)})
+      !== action.eventId)});
+  }
+
+  else if (action.type === actions.SET_EDIT_MODE) {
+    return Object.assign({}, state, { editing: true});
+  }
+
+  else if (action.type === actions.UPDATE_EVENT) {
+    return Object.assign(
+      {}, state,
+      { events: [...state.events, { title: action.title, description: action.description, courtId: action.courtId, time: action.time, date: action.date }] });
+  }
+
+  else if (action.type === actions.RESET_EDIT_MODE) {
+    return Object.assign({}, state, { editing: false });
   }
 
   else if (action.type === actions.SET_PAGE) {

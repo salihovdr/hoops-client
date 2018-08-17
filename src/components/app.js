@@ -7,6 +7,7 @@ import Landing from './landing';
 import CourtList from './court-list';
 import Court from './court';
 import EventForm from './event-create-form';
+import EventEditPage from './event-edit-page';
 import EventList from './event-list';
 import Event from './event';
 import User from './user';
@@ -46,6 +47,13 @@ export class App extends React.Component {
   }
 
   render() {
+    let Component;
+    if (this.props.editing) {
+      Component = EventEditPage;
+    } else {
+      Component = Event;
+    }
+
     return (
       <div className="app">
         {/* <Switch> */}
@@ -58,7 +66,7 @@ export class App extends React.Component {
         <Route exact path="/courts" component={ CourtList } />
         <Route exact path="/courts/:courtId/create-event" component={ EventForm} />
         <Route exact path="/events" component={ EventList } />
-        <Route exact path="/events/:eventId" component={ Event } />
+        <Route exact path="/events/:eventId" component={ Component } />
         {/* </Switch> */}
       </div>
     );
@@ -67,7 +75,8 @@ export class App extends React.Component {
 
 const mapStateToProps = state => ({
   hasAuthToken: state.auth.authToken !== null,
-  loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth.currentUser !== null,
+  editing: state.event.editing
 });
 
 export default withRouter(connect(mapStateToProps)(App));
