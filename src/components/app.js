@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Route, withRouter /*, Switch*/} from 'react-router-dom';
-
 import Navbar from './navbar';
 import Landing from './landing';
 import CourtList from './court-list';

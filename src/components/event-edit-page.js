@@ -12,19 +12,6 @@ export class EventEditPage extends React.Component {
     this.props.dispatch(fetchSingleEvent(this.props.eventWithId.eventId));
   }
 
-  // onSubmit(event) {
-  //   event.preventDefault();
-  //   const title = this.title.value;
-  //   const description = this.description.value;
-  //   const courtId = this.props.courtId;
-  //   const timestamp = {date: this.date.value, time: this.time.value};
-  
-  //   this.props.dispatch(putEvent(title, description, timestamp, courtId))
-  //     .then(() => {
-  //       this.props.history.push(`/courts/${this.props.courtId}`);
-  //     });
-  // }
-
   render() {
     return (
       <main role='main' className='event-create-form'>

@@ -39,6 +39,10 @@ export class EventEditForm extends React.Component {
     }
   }
 
+  cancelEdit(){
+    this.props.dispatch(resetEditMode());
+  }
+
   render() {
     return (
       <form onSubmit={e => this.onSubmit(e)}>
@@ -82,13 +86,22 @@ export class EventEditForm extends React.Component {
           required
         />
         
-        <button 
+        <button
           type="submit"
           name="submit"
           id="submitButton" 
           className="button"
         >
           Submit
+        </button>
+
+        <button onClick={()=>this.cancelEdit()}
+          type="button"
+          name="cancel"
+          id="cancelEdit" 
+          className="cancelEdit"
+        >
+          Cancel
         </button>
       </form>
     );
