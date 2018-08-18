@@ -39,20 +39,24 @@ export default (state = initialState, action) => {
     return Object.assign({}, state, { page:action.page});
   }
 
+  if (action.type === actions.FETCH_EVENTS_REQUEST) {
+    return Object.assign({}, state, { loading: true });
+  }
+
   else if (action.type === actions.FETCH_EVENTS_SUCCESS) {
-    return Object.assign({}, state, { events: [...action.events], singleEvent: null, error: null });
+    return Object.assign({}, state, { events: [...action.events], singleEvent: null, error: null, loading: false});
   }
 
   else if (action.type === actions.FETCH_EVENTS_ERROR) {
-    return Object.assign({}, state, { error: action.error });
+    return Object.assign({}, state, { error: action.error, loading: false});
   }
 
   else if (action.type === actions.FETCH_SINGLE_EVENT_SUCCESS) {
-    return Object.assign({}, state, { singleEvent: action.singleEvent, error: null });
+    return Object.assign({}, state, { singleEvent: action.singleEvent, error: null, loading: false});
   }
 
   else if (action.type === actions.FETCH_SINGLE_EVENT_ERROR) {
-    return Object.assign({}, state, { error: action.error });
+    return Object.assign({}, state, { error: action.error, loading: false});
   }
 
 

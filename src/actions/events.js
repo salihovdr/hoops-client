@@ -34,6 +34,11 @@ export const updateEvent = (title, description, date, time, courtId) => ({
   courtId
 });
 
+export const FETCH_EVENTS_REQUEST = 'FETCH_EVENTS_REQUEST';
+export const fetchEventsRequest = () => ({
+  type: FETCH_EVENTS_REQUEST
+});
+
 export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS';
 export const fetchEventsSuccess = events => ({
   type: FETCH_EVENTS_SUCCESS,
@@ -69,6 +74,7 @@ export const createEvent = (title, description, date, time, courtId) => ({
 });
 
 export const fetchEvents = (page=0) => dispatch => {
+  dispatch(fetchEventsRequest());
   return fetch(`${API_BASE_URL}/events?page=${page}`)
     .then(res => {
       if (!res.ok) {
@@ -85,6 +91,7 @@ export const fetchEvents = (page=0) => dispatch => {
 };
 
 export const fetchSingleEvent = id => dispatch => {
+  dispatch(fetchEventsRequest());
   return fetch(`${API_BASE_URL}/events/${id}`)
     .then(res => {
       if (!res.ok) {

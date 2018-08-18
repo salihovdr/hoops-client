@@ -36,11 +36,11 @@ export default (state = initialState, action) => {
   }
 
   else if (action.type === actions.FETCH_SINGLE_COURT_SUCCESS) {
-    return Object.assign({}, state, { singleCourt: action.singleCourt, error: null });
+    return Object.assign({}, state, { singleCourt: action.singleCourt, error: null, loading: false });
   }
 
   else if (action.type === actions.FETCH_SINGLE_COURT_ERROR) {
-    return Object.assign({}, state, { error: action.error });
+    return Object.assign({}, state, { error: action.error, loading: false });
   }
 
   else if (action.type === actions.SET_FILTER) {

@@ -14,9 +14,8 @@ export const resetFilter = (filter='') => ({
 });
 
 export const FETCH_COURTS_REQUEST = 'FETCH_COURTS_REQUEST';
-export const fetchCourtsRequest = (filter) => ({
-  type: FETCH_COURTS_REQUEST,
-  filter
+export const fetchCourtsRequest = () => ({
+  type: FETCH_COURTS_REQUEST
 });
 
 export const FETCH_COURTS_SUCCESS = 'FETCH_COURTS_SUCCESS';
@@ -44,7 +43,7 @@ export const fetchSingleCourtError = error => ({
 });
 
 export const fetchCourts = filter => dispatch => {
-  // dispatch(fetchCourtsRequest(filter)); --- DO I NEED THIS CODE?
+  dispatch(fetchCourtsRequest());
   let fetchURL = `${API_BASE_URL}/courts`;
   if (filter) {
     fetchURL = `${API_BASE_URL}/courts?zip=${filter}`;
@@ -65,7 +64,7 @@ export const fetchCourts = filter => dispatch => {
 };
 
 export const fetchSingleCourt = id => dispatch => {
-  dispatch(fetchCourtsRequest(id));
+  dispatch(fetchCourtsRequest());
   return fetch(`${API_BASE_URL}/courts/${id}`)
     .then(res => {
       if (!res.ok) {
