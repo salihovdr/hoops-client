@@ -1,7 +1,7 @@
 ## Let's Shoot Some Hoops!
 
 ### Brief Description
-This is client for my web app that allows anyone in Arlington county to search for basketball courts and create events to play with friends and other ballers in the area.
+Client for web app that allows anyone in Arlington county to search for basketball courts and create events to play with friends and other ballers in the area.
 
 ### Tech Stack
 The app uses React for the frontend, Passport/JWT for authentication and Redux for state management.
